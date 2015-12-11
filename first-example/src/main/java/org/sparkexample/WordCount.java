@@ -42,7 +42,8 @@ public class WordCount {
       System.exit(0);
     }
 
-    SparkConf conf = new SparkConf().setAppName("org.sparkexample.WordCount").setMaster("local");
+    String[] jars = {"/Users/vramasahayam/workspace/PetProjects/spark-examples/first-example/target/first-example-1.0-SNAPSHOT.jar"};
+    SparkConf conf = new SparkConf().setAppName("org.sparkexample.WordCount").setMaster("mesos://localhost:5050").setJars(jars);
     JavaSparkContext context = new JavaSparkContext(conf);
 
     JavaRDD<String> file = context.textFile(args[0]);
